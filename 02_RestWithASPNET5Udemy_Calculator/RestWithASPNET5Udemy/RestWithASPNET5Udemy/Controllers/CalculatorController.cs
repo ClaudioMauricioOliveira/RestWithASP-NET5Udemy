@@ -19,12 +19,72 @@ namespace RestWithASPNET5Udemy.Controllers
         }
 
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
-        public IActionResult Get(string firstNumber, string secondNumber)
+        public IActionResult Sum(string firstNumber, string secondNumber)
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
                 var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
                 return Ok(sum.ToString());
+            }
+
+            return BadRequest("Invalid Input.");
+        }
+
+        [HttpGet("substraction/{firstNumber}/{secondNumber}")]
+        public IActionResult Substraction(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var substraction = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+                return Ok(substraction.ToString());
+            }
+
+            return BadRequest("Invalid Input.");
+        }
+
+        [HttpGet("multiplication/{firstNumber}/{secondNumber}")]
+        public IActionResult Multiplication(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var multiplication = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(multiplication.ToString());
+            }
+
+            return BadRequest("Invalid Input.");
+        }
+
+        [HttpGet("division/{firstNumber}/{secondNumber}")]
+        public IActionResult Division(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var division = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(division.ToString());
+            }
+
+            return BadRequest("Invalid Input.");
+        }
+
+        [HttpGet("average/{firstNumber}/{secondNumber}")]
+        public IActionResult Average(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var average = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber)) / 2;
+                return Ok(average.ToString());
+            }
+
+            return BadRequest("Invalid Input.");
+        }
+
+        [HttpGet("square/{number}")]
+        public IActionResult Square(string number)
+        {
+            if (IsNumeric(number))
+            {
+                var square = Math.Sqrt(ConvertToDouble(number));
+                return Ok(square.ToString());
             }
 
             return BadRequest("Invalid Input.");
@@ -36,6 +96,16 @@ namespace RestWithASPNET5Udemy.Controllers
             if (decimal.TryParse(strNumber, out decimalValue))
             {
                 return decimalValue;
+            }
+            return 0;
+        }
+
+        private double ConvertToDouble(string strNumber)
+        {
+            double doubleValue;
+            if (double.TryParse(strNumber, out doubleValue))
+            {
+                return doubleValue;
             }
             return 0;
         }
