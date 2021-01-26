@@ -96,7 +96,7 @@ namespace RestWithASPNET5Udemy
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
 
-            //Evolve, respons·vel pela execuÁ„o do migration
+            //Evolve, respons√°vel pela execu√ß√£o do migration
             //if (Environment.IsDevelopment())
             //{
             //    MigrateDatabase(connection);
@@ -125,7 +125,7 @@ namespace RestWithASPNET5Udemy
                 c.SwaggerDoc("v1",
                 new OpenApiInfo
                 {
-                    Title = "Rest API's From 0 to Azure with ASP.NET CORE 5 and Docker",
+                    Title = "Rest API's From 0 to Azure with ASP.NET CORE 5 and Docker - Foo Bar",
                     Version = "v1",
                     Description = "API RESTful developed in course 'Rest API's From 0 to Azure with ASP.NET CORE 5 and Docker'",
                     Contact = new OpenApiContact
